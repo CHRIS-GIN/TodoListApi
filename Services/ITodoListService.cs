@@ -11,8 +11,8 @@ namespace TodoListApi.Services
     {
         Task<ServiceResponse<List<ToDoItem>>> GetAllTodoLists();
         //Task<ServiceResponse<GetCharacterDto>> GetTodoListById(int id);
-        Task<ServiceResponse<List<ToDoItem>>> AddTodoList(ToDoItem newTodoList);
-        Task<ServiceResponse<ToDoItem>> UpdateTodoList(ToDoItem updateTodoList);
+        Task<ServiceResponse<List<ToDoItem>>> AddTodoItem(ToDoItem newTodoList);
+        Task<ServiceResponse<ToDoItem>> UpdateTodoItem(ToDoItem updateTodoItem);
         Task<ServiceResponse<List<ToDoItem>>> DeleteTodoList(int id);
         
 

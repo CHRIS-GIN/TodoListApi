@@ -27,5 +27,12 @@ namespace TodoListApi.Controllers
         {
             return Ok(await _todoListService.GetAllTodoLists());
         }
+        [HttpPost]
+        public async Task<ActionResult<ServiceResponse<List<ToDoItem>>>> AddToDoItem(ToDoItem newTodoItem){
+            return Ok(await _todoListService.AddTodoItem(newTodoItem));
+        }
+        
+     
+
     }
 }

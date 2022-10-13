@@ -17,9 +17,14 @@ namespace TodoListApi.Services
             _context = context;
         }
 
-        public Task<ServiceResponse<List<ToDoItem>>> AddTodoList(ToDoItem newTodoList)
+        public async Task<ServiceResponse<List<ToDoItem>>> AddTodoItem(ToDoItem newTodoItem)
         {
-            throw new NotImplementedException();
+            var serviceResponse =new ServiceResponse<List<ToDoItem>>();
+            _context.TodoItems.Add(newTodoItem);
+            await _context.SaveChangesAsync();
+            serviceResponse.Data=await _context.TodoItems.ToListAsync();
+            return serviceResponse;
+
         }
 
         public Task<ServiceResponse<List<ToDoItem>>> DeleteTodoList(int id)
@@ -35,9 +40,10 @@ namespace TodoListApi.Services
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<ToDoItem>> UpdateTodoList(ToDoItem updateTodoList)
+        public Task<ServiceResponse<ToDoItem>> UpdateTodoItem(ToDoItem updateTodoItem)
         {
-            throw new NotImplementedException();
+                        throw new NotImplementedException();
+
         }
     }
 }
