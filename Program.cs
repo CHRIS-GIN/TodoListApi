@@ -1,18 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using TodoApi.Models;
-
+using ToDoListApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+//builder.Services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+builder.Services.AddDbContext<TodoContext>(options =>
+options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectionString")));
 builder.Services.AddControllers();
-builder.Services.AddDbContext<TodoContext>(opt =>
-    opt.UseInMemoryDatabase("TodoList"));
-//builder.Services.AddSwaggerGen(c =>
-//{
-//    c.SwaggerDoc("v1", new() { Title = "TodoApi", Version = "v1" });
-//});
 
 var app = builder.Build();
 

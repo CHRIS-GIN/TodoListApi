@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
 using ToDoListApi.Models;
 
-namespace TodoApi.Models
+namespace ToDoListApi.Models
 {
     public class TodoContext : DbContext
     {
@@ -11,6 +11,6 @@ namespace TodoApi.Models
         {
         }
 
-        public DbSet<ToDoItem> TodoItems { get; set; } = null!;
+        public DbSet<ToDoItem> TodoItems { get; set; } = null!;//what table it should use.
     }
 }
