@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using TodoListApi.Models;
+using ToDoListApi.Models;
+
+namespace TodoListApi.Services
+{
+    public interface ITodoListService
+    {
+        Task<ServiceResponse<List<ToDoItem>>> GetAllTodoLists();
+        //Task<ServiceResponse<GetCharacterDto>> GetTodoListById(int id);
+        Task<ServiceResponse<List<ToDoItem>>> AddTodoList(ToDoItem newTodoList);
+        Task<ServiceResponse<ToDoItem>> UpdateTodoList(ToDoItem updateTodoList);
+        Task<ServiceResponse<List<ToDoItem>>> DeleteTodoList(int id);
+        
+
+    }
+}
