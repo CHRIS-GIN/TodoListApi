@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TodoListApi.Models;
+using TodoListApi.Services;
 using ToDoListApi.Models;
 
 namespace TodoListApi.Controllers
@@ -11,11 +13,19 @@ namespace TodoListApi.Controllers
     [Route("api/[controller]")]
     public class TodoListController : ControllerBase
     {
-        private readonly TodoContext _context;
 
-        public TodoListController(TodoContext context)
+        private readonly ITodoListService _todoListService;
+
+        public TodoListController(ITodoListService todoListService)
         {
-            _context = context;
+
+            _todoListService = todoListService;
+        }
+
+        [HttpGet("GetAll")]
+        public async Task<ActionResult<ServiceResponse<List<ToDoItem>>>> GetAll()
+        {
+            return Ok(await _todoListService.GetAllTodoLists());
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using TodoListApi.Models;
 using ToDoListApi.Models;
 
@@ -26,9 +27,12 @@ namespace TodoListApi.Services
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse<List<ToDoItem>>> GetAllTodoLists()
+        public async Task<ServiceResponse<List<ToDoItem>>> GetAllTodoLists()
         {
-            throw new NotImplementedException();
+            var serviceResponse = new ServiceResponse<List<ToDoItem>>();
+            var dbTodoItem = await _context.TodoItems.ToListAsync();
+            serviceResponse.Data = dbTodoItem;
+            return serviceResponse;
         }
 
         public Task<ServiceResponse<ToDoItem>> UpdateTodoList(ToDoItem updateTodoList)
