@@ -10,6 +10,11 @@ namespace TodoListApi.Services
 {
     public class TodoListService : ITodoListService
     {
+        // private static List<ToDoItem> toDoItems = new List<ToDoItem>(){
+        //     new ToDoItem(),
+
+        //     new ToDoItem{Id=1,Text="first thing"}
+        // };
         private readonly TodoContext _context;
 
         public TodoListService(TodoContext context)
