@@ -24,17 +24,33 @@ namespace TodoListApi.Services
 
         public async Task<ServiceResponse<List<ToDoItem>>> AddTodoItem(ToDoItem newTodoItem)
         {
-            var serviceResponse =new ServiceResponse<List<ToDoItem>>();
+            var serviceResponse = new ServiceResponse<List<ToDoItem>>();
             _context.TodoItems.Add(newTodoItem);
             await _context.SaveChangesAsync();
-            serviceResponse.Data=await _context.TodoItems.ToListAsync();
+            serviceResponse.Data = await _context.TodoItems.ToListAsync();
             return serviceResponse;
 
         }
 
-        public Task<ServiceResponse<List<ToDoItem>>> DeleteTodoList(int id)
+        public async Task<ServiceResponse<List<ToDoItem>>> DeleteTodoList(int id)
         {
-            throw new NotImplementedException();
+            ServiceResponse<List<ToDoItem>> response = new ServiceResponse<List<ToDoItem>>();
+            try
+            {
+                ToDoItem toDoItem = await _context.TodoItems.FirstAsync(c => c.Id == id);
+                _context.TodoItems.Remove(toDoItem);
+                await _context.SaveChangesAsync();
+                response.Data = _context.TodoItems.ToList();
+
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+            }
+            return response;
         }
 
         public async Task<ServiceResponse<List<ToDoItem>>> GetAllTodoLists()
@@ -45,10 +61,29 @@ namespace TodoListApi.Services
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<ToDoItem>> UpdateTodoItem(ToDoItem updateTodoItem)
+        public async Task<ServiceResponse<ToDoItem>> UpdateTodoItem(ToDoItem updateTodoItem)
         {
-                        throw new NotImplementedException();
+            ServiceResponse<ToDoItem> response = new ServiceResponse<ToDoItem>();
 
+            try
+            {
+                var toDoItem = await _context.TodoItems.FirstOrDefaultAsync(c => c.Id == updateTodoItem.Id);
+                //toDoItem.Id=updateTodoItem.Id;
+
+                toDoItem.Text = updateTodoItem.Text;
+                toDoItem.Done = updateTodoItem.Done;
+                await _context.SaveChangesAsync();
+
+                response.Data = toDoItem;
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+            }
+            return response;
         }
     }
 }

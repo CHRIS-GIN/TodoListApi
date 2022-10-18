@@ -9891,11 +9891,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/zhanshuo.qithoughtworks.com/Downloads/TW_work/c#-learning/TodoListApi/TodoListApi.csproj",
+      "projectUniqueName": "/Users/zhanshuo.qithoughtworks.com/Downloads/TW_work/c#-learning/TodoListApi-using-nunit/TodoListApi/TodoListApi.csproj",
       "projectName": "TodoListApi",
-      "projectPath": "/Users/zhanshuo.qithoughtworks.com/Downloads/TW_work/c#-learning/TodoListApi/TodoListApi.csproj",
+      "projectPath": "/Users/zhanshuo.qithoughtworks.com/Downloads/TW_work/c#-learning/TodoListApi-using-nunit/TodoListApi/TodoListApi.csproj",
       "packagesPath": "/Users/zhanshuo.qithoughtworks.com/.nuget/packages/",
-      "outputPath": "/Users/zhanshuo.qithoughtworks.com/Downloads/TW_work/c#-learning/TodoListApi/obj/",
+      "outputPath": "/Users/zhanshuo.qithoughtworks.com/Downloads/TW_work/c#-learning/TodoListApi-using-nunit/TodoListApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/zhanshuo.qithoughtworks.com/.nuget/NuGet/NuGet.Config"
