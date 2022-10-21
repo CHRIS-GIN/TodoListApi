@@ -10,12 +10,9 @@ namespace TodoListApi.Services
 {
     public class TodoListService : ITodoListService
     {
-        // private static List<ToDoItem> toDoItems = new List<ToDoItem>(){
-        //     new ToDoItem(),
-
-        //     new ToDoItem{Id=1,Text="first thing"}
-        // };
         private readonly TodoContext _context;
+
+
 
         public TodoListService(TodoContext context)
         {
@@ -69,7 +66,7 @@ namespace TodoListApi.Services
             {
                 var toDoItem = await _context.TodoItems.FirstOrDefaultAsync(c => c.Id == updateTodoItem.Id);
                 //toDoItem.Id=updateTodoItem.Id;
-
+                toDoItem.Timestamp = updateTodoItem.Timestamp;
                 toDoItem.Text = updateTodoItem.Text;
                 toDoItem.Done = updateTodoItem.Done;
                 await _context.SaveChangesAsync();
